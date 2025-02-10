@@ -12,7 +12,7 @@
 </head>
 <body>
     <h1>Lucky Draw</h1>
-    <p>Pilih nama anda dan cuba nasib! (Hanya boleh cuba sekali sahaja)</p>
+    <p>Pilih nama anda dan menangi hadiah misteri! (Hanya boleh cuba sekali sahaja)</p>
     <form id="luckyDrawForm">
         <select id="name" required>
             <option value="" disabled selected>Pilih nama anda</option>
@@ -43,7 +43,7 @@
     <ul id="history"></ul>
     
     <script>
-        const scriptURL = "PASTE_YOUR_WEB_APP_URL_HERE";
+        const scriptURL = "https://script.google.com/macros/s/AKfycbwtQq6RdgTS3HY2iov8RyOR3DlgJrJkTnkA8Nv3yOGlHlM-nVxI6Ww7Al62uK4iQI1W/exec";
         let participants = JSON.parse(localStorage.getItem("luckyDrawParticipants")) || {}; // Simpan peserta yang telah cuba
         
         let prizes = [
