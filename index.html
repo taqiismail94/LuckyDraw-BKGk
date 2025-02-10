@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucky Draw</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
+        #result { margin-top: 20px; font-size: 1.5em; font-weight: bold; color: green; }
+    </style>
+</head>
+<body>
+    <h1>Lucky Draw</h1>
+    <p>Masukkan nama anda dan cuba nasib!</p>
+    <form id="luckyDrawForm">
+        <input type="text" id="name" placeholder="Nama anda" required>
+        <button type="submit">Cuba Nasib</button>
+    </form>
+    <p id="result"></p>
+    
+    <script>
+        document.getElementById('luckyDrawForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value.trim();
+            if (!name) return;
+            
+            const prizes = ["iPhone 15", "Laptop", "Tablet", "Smartwatch", "Baucar RM50", "Tiada hadiah, cuba lagi!"];
+            const randomPrize = prizes[Math.floor(Math.random() * prizes.length)];
+            
+            document.getElementById('result').innerText = `${name}, anda menang: ${randomPrize}!`;
+        });
+    </script>
+</body>
+</html>
