@@ -23,7 +23,7 @@
     <p id="result"></p>
 
     <script>
-        const scriptURL = "https://script.google.com/macros/s/AKfycbxpLG6T__Wt7_ExkQa9F09q8p4Fqd8GJwsxpz8H9ABBfqE7b8W1DPGlUoZvs9-2_UHm7g/exec"; // Gantikan dengan URL Apps Script anda
+        const scriptURL = "https://script.google.com/macros/s/AKfycbxpLG6T__Wt7_ExkQa9F09q8p4Fqd8GJwsxpz8H9ABBfqE7b8W1DPGlUoZvs9-2_UHm7g/exec";
 
         const names = `ABDUL JALIL BIN HUSIN
 ABDURRAHMAN B. RAHIM
@@ -197,12 +197,12 @@ WAN ZANARIAH BT. MUHAMMAD
 ZAFEENA BT PAKWANTEH
 ZAHARAH BINTI ABDUL GHAFFAR
 ZALINA BT JAMALUDDIN
-ZURAIDI BIN MOHAMAD`.split("\n"); // Bahagikan nama ke dalam array
+ZURAIDI BIN MOHAMAD`.split("\n");
 
         const selectElement = document.getElementById('name');
         names.forEach(name => {
             let option = document.createElement('option');
-            option.value = name.trim(); // Pastikan tiada ruang kosong
+            option.value = name.trim();
             option.textContent = name.trim();
             selectElement.appendChild(option);
         });
@@ -224,9 +224,15 @@ ZURAIDI BIN MOHAMAD`.split("\n"); // Bahagikan nama ke dalam array
             const name = document.getElementById('name').value;
             if (!name) return;
 
+            if (localStorage.getItem(name)) {
+                document.getElementById('result').innerText = `${name}, anda telah mencuba dan memenangi: ${localStorage.getItem(name)}!`;
+                return;
+            }
+
             let selectedPrize = prizes[Math.floor(Math.random() * prizes.length)];
 
             document.getElementById('result').innerText = `${name}, anda menang: ${selectedPrize}!`;
+            localStorage.setItem(name, selectedPrize);
 
             fetch(scriptURL, {
                 method: 'POST',
