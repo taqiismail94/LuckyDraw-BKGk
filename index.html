@@ -7,27 +7,89 @@
     <style>
         body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
         #result { margin-top: 20px; font-size: 1.5em; font-weight: bold; color: green; }
+        #history { margin-top: 30px; text-align: left; max-width: 400px; margin-left: auto; margin-right: auto; }
     </style>
 </head>
 <body>
     <h1>Lucky Draw</h1>
-    <p>Masukkan nama anda dan cuba nasib!</p>
+    <p>Pilih nama anda dan cuba nasib! (Hanya boleh cuba sekali sahaja)</p>
     <form id="luckyDrawForm">
-        <input type="text" id="name" placeholder="Nama anda" required>
+        <select id="name" required>
+            <option value="" disabled selected>Pilih nama anda</option>
+            <script>
+                const names = [
+                    "ABDUL JALIL BIN HUSIN", "ABDURRAHMAN B. RAHIM", "AERYZA BT AZMAN", "AHMAD KHAIRUDDIN BIN MOHAMMAD SHUHAILI",
+                    "AHMAD TAQIYUDDIN BIN ISMAIL", "AIMAN BIN NAWAWI @ NAWI", "AINULFARA BT. MOHD PARAWES", "AINUN MARDHIYYAH BINTI IBRAHIM",
+                    "AIZUL ZAKARIA B. HAMZAH", "ALIFF SAIFUL HAIKAL BIN SAHZAN AMIR", "AMUTHA A/P ANATHURI", "ANNISA BT JOHAN",
+                    "ASMAWATI BT SAID", "ASZILA BT. OMAR", "AZLINDA BINTI ABD AZIZ", "AZLINDA BINTI ABU",
+                    "AZNAN AZIZ BIN ABDUL AZIZ", "AZURA BINTI OTHMAN", "BALQIS BINTI MOHD SHAH", "DAVISHINEE A/P DAVID",
+                    "DAYANG NURHASHIMAH BT ISMAIL", "FAIZA BT. ABDUL WAHID", "FARAHIDAYU BT HARIRI", "FARHATNA BT ISMAIL @ ZANUDIN",
+                    "FARIDATUL HANIM BT NASARUDIN", "FAZILA BINTI MOHAMMAD WASIT", "FORNORLINA BT MAMAT", "GANDHIMADHI A/P MUNISAMY",
+                    "HAFIZAH BINTI MOHD YUSOF", "HALIMATUN SA’ADIAH  BT ABDUL MANAP", "HARYATI BT. HUSIN", "HUSNA BINTI MD RAMLI",
+                    "INTAN SYAZWANI BT MOHAMMAD SOKARDI", "ISHAFIZA BT. ISMAIL", "ISMAWATY BT ZAKARIA", "JOSIPAH BT RAHIMAT",
+                    "JULIANA BT. MHD NOR YATIM", "JUNAIDA BT MAMAT", "KAMSUL FAKHRURADZI KHUSAIRI BIN KAMSULBAHRI", "KHAIRUL NIZAM BIN HANAFI",
+                    "LAILI BT. IBRAHIM", "LIDZA DAWANI BT. MOHD KHALID", "MAHAYATON BT MOHAMAD", "MAIZURA BT. MA’ASOR@MANSOR"
+                ];
+                names.forEach(name => {
+                    document.write(`<option value="${name}">${name}</option>`);
+                });
+            </script>
+        </select>
         <button type="submit">Cuba Nasib</button>
     </form>
     <p id="result"></p>
     
+    <h2>Sejarah Keputusan</h2>
+    <ul id="history"></ul>
+    
     <script>
+        const scriptURL = "PASTE_YOUR_WEB_APP_URL_HERE";
+        let participants = JSON.parse(localStorage.getItem("luckyDrawParticipants")) || {}; // Simpan peserta yang telah cuba
+        
+        let prizes = [
+            { name: "Skuter", count: 1 },
+            { name: "TV", count: 1 },
+            { name: "Emas", count: 2 },
+            { name: "Jam", count: 2 },
+            { name: "Weight Scale", count: 2 },
+            { name: "Toaster", count: 4 },
+            { name: "Air Fryer", count: 2 },
+            { name: "Barangan IKEA", count: 40 },
+            { name: "Maaf Tiada Hadiah", count: 120 }
+        ];
+        
         document.getElementById('luckyDrawForm').addEventListener('submit', function(event) {
             event.preventDefault();
-            const name = document.getElementById('name').value.trim();
+            const name = document.getElementById('name').value;
             if (!name) return;
             
-            const prizes = ["iPhone 15", "Laptop", "Tablet", "Smartwatch", "Baucar RM50", "Tiada hadiah, cuba lagi!"];
-            const randomPrize = prizes[Math.floor(Math.random() * prizes.length)];
+            if (participants[name]) {
+                document.getElementById('result').innerText = `${name}, anda sudah mencuba sekali sahaja!`;
+                return;
+            }
             
-            document.getElementById('result').innerText = `${name}, anda menang: ${randomPrize}!`;
+            let availablePrizes = prizes.filter(prize => prize.count > 0);
+            if (availablePrizes.length === 0) {
+                document.getElementById('result').innerText = "Semua hadiah telah habis!";
+                return;
+            }
+            
+            let randomIndex = Math.floor(Math.random() * availablePrizes.length);
+            let selectedPrize = availablePrizes[randomIndex];
+            prizes[randomIndex].count--;
+            
+            participants[name] = selectedPrize.name;
+            localStorage.setItem("luckyDrawParticipants", JSON.stringify(participants));
+            
+            document.getElementById('result').innerText = `${name}, anda menang: ${selectedPrize.name}!`;
+            
+            fetch(scriptURL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name: name, prize: selectedPrize.name })
+            })
+            .then(response => console.log("Keputusan disimpan dalam Google Sheets"))
+            .catch(error => console.error("Ralat:", error));
         });
     </script>
 </body>
