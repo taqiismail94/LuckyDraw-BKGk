@@ -7,6 +7,9 @@
     <style>
         body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
         #result { margin-top: 20px; font-size: 1.5em; font-weight: bold; color: green; }
+        #history { margin-top: 30px; text-align: left; display: inline-block; }
+        #history h2 { text-align: center; }
+        #historyList { list-style: none; padding: 0; }
     </style>
 </head>
 <body>
@@ -22,9 +25,12 @@
 
     <p id="result"></p>
 
-    <script>
-        const scriptURL = "https://script.google.com/macros/s/AKfycbxpLG6T__Wt7_ExkQa9F09q8p4Fqd8GJwsxpz8H9ABBfqE7b8W1DPGlUoZvs9-2_UHm7g/exec";
+    <div id="history">
+        <h2>History Keputusan</h2>
+        <ul id="historyList"></ul>
+    </div>
 
+    <script>
         const names = `ABDUL JALIL BIN HUSIN
 ABDURRAHMAN B. RAHIM
 AERYZA BT AZMAN
@@ -32,172 +38,7 @@ AHMAD KHAIRUDDIN BIN MOHAMMAD SHUHAILI
 AHMAD TAQIYUDDIN BIN ISMAIL
 AIMAN BIN NAWAWI @ NAWI
 AINULFARA BT. MOHD PARAWES
-AINUN MARDHIYYAH BINTI IBRAHIM
-AIZUL ZAKARIA B. HAMZAH
-ALIFF SAIFUL HAIKAL BIN SAHZAN AMIR
-AMUTHA A/P ANATHURI
-ANNISA BT JOHAN
-ASMAWATI BT SAID
-ASZILA BT. OMAR
-AZLINDA BINTI ABD AZIZ
-AZLINDA BINTI ABU
-AZNAN AZIZ BIN ABDUL AZIZ
-AZURA BINTI OTHMAN
-BALQIS BINTI MOHD SHAH
-DAVISHINEE A/P DAVID
-DAYANG NURHASHIMAH BT ISMAIL
-FAIZA BT. ABDUL WAHID
-FARAHIDAYU BT HARIRI
-FARHATNA BT ISMAIL @ ZANUDIN
-FARIDATUL HANIM BT NASARUDIN
-FAZILA BINTI MOHAMMAD WASIT
-FORNORLINA BT MAMAT
-GANDHIMADHI A/P MUNISAMY
-HAFIZAH BINTI MOHD YUSOF
-HALIMATUN SA’ADIAH  BT ABDUL MANAP
-HARYATI BT. HUSIN
-HUSNA BINTI MD RAMLI
-INTAN SYAZWANI BT MOHAMMAD SOKARDI
-ISHAFIZA BT. ISMAIL
-ISMAWATY BT ZAKARIA
-JOSIPAH BT RAHIMAT
-JULIANA BT. MHD NOR YATIM
-JUNAIDA BT MAMAT
-KAMSUL FAKHRURADZI KHUSAIRI BIN KAMSULBAHRI
-KHAIRUL NIZAM BIN HANAFI
-LAILI BT. IBRAHIM
-LIDZA DAWANI BT. MOHD KHALID
-MAHAYATON BT MOHAMAD
-MAIZURA BT. MA’ASOR@MANSOR
-MALINDA BT. BUJANG
-MARYAM JAMEELAH BINTI MUSTAPA
-MAS INTAN SURIANI BT. ABDUL MALEK
-MASTURAH BT. ZAHARUDIN
-MAZIAH BT DAUD
-MAZNIAH BT. MANDIN
-MD NASRIN B. HJ MUTI@BASIR
-MELISSA BT. MOHD AMRAN DE COSTA
-MIZATUL AKMAL BT YUSOF
-MOHD FADZIL B. KARIM
-MOHD HANAFI BIN MAMAT
-MOHD YAMIN B. MUKHTAR
-MUAZ QIFARI B. MOHD HAMIDIM
-MUHAMAD NAJMY ASYRAF BIN MOHD SANI
-MUHAMAD RAZALI BIN DAMIS
-MUHAMAD SYAIRAZI ASYRAF BIN SUHAIMI
-MUHAMMAD RUZAINI BIN RUSLI
-MUHD SUFIZAN B. MOHD SOYONG
-NADIA BINTI PURI
-NANG NORAINI BINTI NIK AHMAD
-NIK HAZWANI BINTI NIK MAT
-NIK NAZMAH BT. MOHAMMAD
-NIK NURUL AFIQAH BT WAN ZAINODIN
-NISAUL FAIZNIN BINTI ZAKARIA
-NOOR AFIFAH BINTI MOHD SAFRI
-NOORBAIZURA BINTI AHMAD
-NOORHISHAM BIN JUHARI
-NOORIZAH BT. HJ HARUN
-NOORLITA BINTI ABDUL RAHMAN
-NOOROLHASMI B. CHE HASHIM
-NOR AISHAH BT ISMAIL
-NOR AKMAL BINTI MAHASSAN 
-NOR DIANA BT ZAINAL ABIDIN
-NOR FAZILAH BT AWANG
-NOR SALIZA BT. MOHD GHAZALI
-NORA BT. NASIR
-NORAISAH BT. SULAIMAN
-NORHASNIZA BT NAZI
-NORHIDAYAH BINTI FAUZI
-NORLIDA BT MOHD NOOR
-NORLIDAH OTHMAN
-NORLIN BT. WAHID
-NORMAH BT. M. JAAFAR
-NORRULHUDA AINA BT. ALUDIN
-NORZILAWATI BT JUSOH @ MOHAMAD ZAWAWI
-NUR ATIQAH ILYANI BINTI AZNAN
-NUR AZLIN BINTI YAHYA
-NUR HARTINI BINTI ABDUL RAHMAN
-NUR QISTINA BINTI JAINE
-NUR ZAHIDAH BINTI MOHD YUSOFF
-NUR ZAIRA SYAZLIN BT ZAILANI
-NUR’AIN BINTI MOHD DAUD
-NUR'UMAIRAH BINTI ZAKARIA
-NURAISYAH ADNIE BINTI ABD RAHMAN
-NURDALILA BT AHMAD SHUKRI
-NURHIDAYAH BT CHE HASSAN
-NURIYASAIDAH  BINTI YAHYA
-NURUL AFIQAH BINTI PAUZI
-NURUL AMALIN BT ABDUL RAHIM
-NURUL HASHIMAH BINTI HASHIM
-NURUL HIDAYAH BT RAZALI
-NURUL SYAZWANI BT OMAR
-NURUL ZAINI BT RAMLI
-NURUL ZULAIKA BINTI HARUN
-NUUR FARISHA FARHAH BINTI MOHAMAD
-PATIHAH BT CHE YUSOF
-RAFIDAH BT MAHMUD
-REVATHI A/P SUBRAMANIAM
-RIZAWATI BT AWANG
-ROHANA BT. ABDULLAH
-ROHANA BT. SALLEH
-ROHANIZA BINTI MD SULLAH
-ROS AZANIZON BT IBRAHIM
-ROSHAYATI BINTI MUSAHAR
-ROSLIZA BT ABDUL RAHMAN
-ROSMANILA BINTI KHUZAIMAH
-ROSSILAWATI BINTI ABU BAKAR
-ROZILA BINTI RAMLI
-ROZINA BT. YUSOFF
-ROZITA BT ISMAIL
-ROZITA BT. ABU BAKAR
-RUA AK AGANG
-RUSIDAH BT. ABDUL WAHAB
-RUSLINAWATI BINTI YUNUS
-SABARIAH BT MOHD GHAZALI
-SALWA BT. ELIAS@MOHD JAINI
-SALWATI BT MD AMIN
-SARAH IRDINA BINTI SYAHRIL AZMIN
-SARAVANABBAVAN A/L ITHARAJI
-SHAFIDAH BT. SHAARAN
-SHAHEELA NIZURA BT. JUSOH
-SHAHRUL MIZA B. HAMDAN
-SHARIPAH BINTI ABU BAKAR
-SHARIZAH BT. SIDIK
-SHUHAINOR BT ABDULLAH
-SITI DORISHA BT MOHAMAD
-SITI FATIMAH BINTI BERDU
-SITI FATIMAH BINTI RASDI
-SITI FATIMAH BT AHMAD SIRAJ
-SITI KAMALIAH BINTI TAHA
-SITI NORLIZA BT JOHARI
-SITI NORMALA BINTI ABDUL ZAMAN 
-SITI NUR HASINAH BT HUSSIAN
-SITI NURBAYA BT. ABD. GHAFAR
-SITI NURZEHAN BT. MUSA
-SITI ROQIYAH BT. ABDUL RAHMAN
-SITI ZURIAH BT YAHAYA
-SOLEHAH BT SA’ARI
-SUHAIDA BT. BUHARI
-SULASIAH BT. MUNAJIR
-SURIA BT. ABDUL AZIZ
-SURIYATI BT TALIB
-SURIZA BINTI ABDULLAH
-SUZALYNA BINTI ABDULLAH
-SUZANA BT. JUMANI
-SYED MOHD NASIR BIN TUAN SEMBAK
-TEYUN SIEW CIEN
-TIJANI BT. ABU KASSIM
-UMI ELAINA BT. MOHD YUSOF
-WAN AIZURA BT. A RAMAN
-WAN ANIZSHARBANI BIN WAN AZMAWI
-WAN MARIAMMAH BT WAN SALIM@SALLEH
-WAN ROSELAWATI BT WAN HARON
-WAN ROSMARINI BT. ISMAIL
-WAN ZANARIAH BT. MUHAMMAD
-ZAFEENA BT PAKWANTEH
-ZAHARAH BINTI ABDUL GHAFFAR
-ZALINA BT JAMALUDDIN
-ZURAIDI BIN MOHAMAD`.split("\n");
+`.split("\n");
 
         const selectElement = document.getElementById('name');
         names.forEach(name => {
@@ -207,17 +48,26 @@ ZURAIDI BIN MOHAMAD`.split("\n");
             selectElement.appendChild(option);
         });
 
-        const prizes = [
-            ...Array(1).fill("Skuter"),
-            ...Array(1).fill("TV"),
-            ...Array(2).fill("Emas"),
-            ...Array(2).fill("Jam"),
-            ...Array(2).fill("Weight Scale"),
-            ...Array(4).fill("Toaster"),
-            ...Array(2).fill("Air Fryer"),
-            ...Array(40).fill("IKEA"),
-            ...Array(120).fill("Maaf Tiada Hadiah")
-        ];
+        let prizes = JSON.parse(localStorage.getItem("prizes")) || {
+            "Skuter": 1,
+            "TV": 1,
+            "Emas": 1,
+            "Jam": 1,
+            "Weight Scale": 2,
+            "Maaf Tiada Hadiah": 1
+        };
+
+        function updateHistory() {
+            const historyList = document.getElementById('historyList');
+            historyList.innerHTML = '';
+            Object.keys(localStorage).forEach(name => {
+                if (name !== "prizes") {
+                    let listItem = document.createElement('li');
+                    listItem.textContent = `${name} - ${localStorage.getItem(name)}`;
+                    historyList.appendChild(listItem);
+                }
+            });
+        }
 
         document.getElementById('luckyDrawForm').addEventListener('submit', function(event) {
             event.preventDefault();
@@ -229,20 +79,16 @@ ZURAIDI BIN MOHAMAD`.split("\n");
                 return;
             }
 
-            let selectedPrize = prizes[Math.floor(Math.random() * prizes.length)];
-
-            document.getElementById('result').innerText = `${name}, anda menang: ${selectedPrize}!`;
+            let availablePrizes = Object.keys(prizes).filter(prize => prizes[prize] > 0);
+            let selectedPrize = availablePrizes[Math.floor(Math.random() * availablePrizes.length)];
+            prizes[selectedPrize]--;
+            localStorage.setItem("prizes", JSON.stringify(prizes));
             localStorage.setItem(name, selectedPrize);
-
-            fetch(scriptURL, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ name: name, prize: selectedPrize })
-            })
-            .then(response => response.text())
-            .then(data => console.log("Keputusan disimpan:", data))
-            .catch(error => console.error("Ralat:", error));
+            document.getElementById('result').innerText = `${name}, anda menang: ${selectedPrize}!`;
+            updateHistory();
         });
+
+        updateHistory();
     </script>
 </body>
 </html>
